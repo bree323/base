@@ -2,8 +2,8 @@
 ts资源来源： 技术胖
 
 目录说明：
-    -advance: 空目录（暂无用处）
-    -another: 其它demo
+    -func: 功能demo相关
+    -another: 其它demo尝试
     -baseJs：js相关demo
     -baseTs：ts相关demo
     -snippets.json: ？
