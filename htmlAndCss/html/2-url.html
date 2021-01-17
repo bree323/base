@@ -38,9 +38,130 @@
 
 
 <div class="wrap" contenteditable='true'>
-    <p>这是一段很长的故事</p>
+    <p>这是contenteditable属性，他是枚举属性，不是布尔属性</p>
 </div>
 
+<!-- 小标签 -->
+<div class="wrap">
+    <p>勾股定理是
+        <var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup>
+      。
+    </p>
+
+    <p>
+        一个容易写错的成语是把<em>安分守己</em>写成<u>安份守己</u>。
+    </p>
+
+    <p>今天特价商品：<s>三文鱼</s>（售完）</p>
+
+    <blockquote cite="https://quote.example.com">
+        <p>天才就是 1% 的天赋和99%的汗水。</p>
+    </blockquote>
+    <cite>-- 爱迪生</cite>
+
+
+    <p>
+        莎士比亚的《哈姆雷特》有一句著名的台词：
+        <q cite="https://quote.example.com">活着还是死亡，这是一个问题。</q>
+    </p>
+
+    <pre class="code-wrap">
+        <code >
+          let a = 1;
+          console.log(a);
+        </code>
+    </pre>
+
+    <p>运动会预定<time datetime="2021-01-20">下周三</time>举行。</p>
+        
+    <p>本次马拉松比赛第一名是<data value="39">张三</data></p>。     
+        
+    
+
+    <p>
+        音乐会在
+        <time datetime="20:00">晚上八点</time>
+        开始。
+    </p>
+</div>
+
+
+<!-- 表格 -->
+
+<div class="wrap">
+    <table border="1px solid #ccc">
+        <caption>示例表格1</caption>
+        <thead>
+            <th>行数</th>
+            <th>序号</th>
+            <th>序号</th>
+            <th>序号</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th>第一行</th>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>第二行</th>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+    <table>
+        <caption>示例表格2</caption>
+        <tr>
+          <th id="no">学号</th><th id="names">姓名</th>
+        </tr>
+        <tr>
+          <td headers="no">001</td><td headers="names">张三</td>
+        </tr>
+        <tr>
+          <td headers="no">002</td><td headers="names">李四</td>
+        </tr>
+      </table>
+
+
+      <table>
+          <caption>示例表格3</caption>
+        <thead>
+          <tr>
+            <th scope="col">海报名称</th>
+            <th scope="col">颜色</th>
+            <th colspan="3" scope="colgroup">尺寸</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="3" scope="rowgroup">Zodiac</th>
+            <th scope="row">Full color</th>
+            <td>A2</td>
+            <td>A3</td>
+            <td>A4</td>
+          </tr>
+          <tr>
+            <th scope="row">Black and white</th>
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+          </tr>
+          <tr>
+            <th scope="row">Sepia</th>
+            <td>A3</td>
+            <td>A4</td>
+            <td>A5</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
 
 <script>
 /* var _hmt = _hmt || [];
