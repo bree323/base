@@ -1,0 +1,16 @@
+/* 公共样式1 */
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+.wrap {
+    margin: 16px auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid #ccc;
+}

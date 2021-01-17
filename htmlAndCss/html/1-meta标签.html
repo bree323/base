@@ -21,16 +21,69 @@
     <meta name="referrer" content="no-referrer">
 
     <!-- <meta>标签的http-equiv属性用来覆盖 HTTP 回应的头信息字段，content属性是对应的字段内容。这两个属性与 HTTP 协议相关，属于高级用法 -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
     <meta http-equiv="Content-Type" content="Type=text/html; charset=utf-8">
     <meta http-equiv="refresh" content="30">
-    <meta http-equiv="refresh" content="30;URL='http://website.com'">
+    <meta http-equiv="refresh" content="30;URL='http://website.com'"> -->
 
 
-    <title>Document</title>
+    <title>meta标签</title>
+
+
+    <link rel="stylesheet" href="../css/main.css">
+
 </head>
 <body>
     
 
+    <!-- tabindex 浏览器自带-->
+    <div class="mg-center wrap">
+        <div title="title>>>>">title属性</div>
+        <div class="ipt-area flex">
+
+            <div class="ipt-item">
+                <label for="ipt-name">输入姓名：</label>
+                <input type="text" name="ipt-name" id="ipt-name"/>
+            </div>
+
+            <div class="ipt-item">
+                <label for="ipt-age" >输入年龄：</label>
+                <input type="text" name="ipt-age" id="ipt-age"/>
+            </div>
+
+            <div class="ipt-item">
+                <label for="ipt-sex" >输入性别：</label>
+                <input type="text" name="ipt-sex" id="ipt-sex" accesskey="a"/>
+            </div>
+
+            <div class="ipt-item" >
+                <label for="ipt-height" >输入身高：</label>
+                <input type="text" name="ipt-height" id="ipt-height" accesskey="a"/>
+                <button onclick="switchIptHeight(event)"> 
+                    不输入身高
+                </button>
+            </div>
+
+        </div>
+        
+        <div class="confirm-area">
+            <!-- accesskey快捷键，该元素就会得到焦点---无效 -->
+            <input type="button" value="提交" accesskey="s">
+        </div>
+        
+    </div>
+<script>
+   function switchIptHeight(e) {
+       e.target.innerText == "不输入身高" && e.target.previousElementSibling.setAttribute("disabled", true)
+       e.target.innerText == "输入身高" && e.target.previousElementSibling.removeAttribute("disabled", true)
+
+        e.target.innerText = e.target.innerText == "输入身高"? "不输入身高" : "输入身高";
+        // e.target.style = "display: block"
+        
+   }
+   
+
+</script>
 </body>
+
 </html>

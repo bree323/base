@@ -1,0 +1,6 @@
+/* 样式主入口 */
+@import './until.css';
+
+.mg-center {
+    margin: 16px auto;
+}
