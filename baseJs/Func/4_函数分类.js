@@ -2,7 +2,7 @@
  * @Author: yuan.zhou
  * @Date: 2021-04-18 23:41:25
  * @Descripton: 
- * @LastEditTime: 2021-04-20 21:00:40
+ * @LastEditTime: 2021-05-07 21:58:44
  */
 /* 1-纯函数与函数的副作用
 * 纯函数：一个函数相同的输入只能有唯一的输出
@@ -88,4 +88,3 @@
     console.log(add_1(2,3), add_1.valueOf());
   })();
 });
-

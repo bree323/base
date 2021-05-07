@@ -1,10 +1,13 @@
+/*
+ * @Author: yuan.zhou
+ * @Date: 2021-04-18 11:25:14
+ * @Descripton: 
+ * @LastEditTime: 2021-05-07 23:05:17
+ */
 "use strict";
 // 1-基础数据静态类型
 var num1 = 1;
-<<<<<<< HEAD
 console.log(num1, num1.toFixed(2));
-=======
->>>>>>> advance
 var tomato = {
     name: "土豆",
     price: 1.00,
@@ -42,30 +45,10 @@ var addFn = function (x, y) {
     return x + y + '';
 };
 var addTotal = addFn(xx, yy);
-<<<<<<< HEAD
 console.log(addTotal);
-=======
-// console.log(addTotal)
->>>>>>> advance
 var obj = {
     name: "bree",
     age: 18
 };
 obj.name = "zoe";
-<<<<<<< HEAD
 console.log({ obj: obj });
-=======
-// console.log({obj})
-// Date
-var date = Date();
-// console.log(date, typeof date)
-var dateNew0 = new Date("2020, 1, 12");
-var dateNew = new Date(Date.parse("2020, 1, 12"));
-// console.log(dateNew0.toString(), dateNew.toString(), typeof dateNew)
-// console.log(dateNew.toISOString() === dateNew.toJSON())
-// console.log(typeof localTime.toLocaleString())
-var localTime = new Date().toLocaleString("zh-CN", {
-    hour12: false,
-}).replace(/\//g, "-");
-console.log({ localTime: localTime });
->>>>>>> advance

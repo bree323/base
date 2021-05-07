@@ -2,11 +2,11 @@
  * @Author: yuan.zhou
  * @Date: 2021-04-18 11:40:16
  * @Descripton: 闭包
- * @LastEditTime: 2021-04-18 23:45:48
+ * @LastEditTime: 2021-05-07 21:57:45
  */
 /* 1-闭包简介 
   js作用域链的查找机制: 作用域链的查找是线性、有序的，外部执行上下文不能访问内部执行上下文
-  但是，又是不得不需要在外部执行上下文中获取到内部执行上下文中的变量或方法，这就是闭包的作用
+  但是，有时不得不需要在外部执行上下文中获取到内部执行上下文中的变量或方法，这就是闭包的作用
 */
 (function() {
   let a = 0
@@ -40,12 +40,14 @@
   let res22 = addBy10()
   let res3 = addBy5()
   let res33 = addBy10()
-  console.log({res1,res2,res3},{res11,res22,res33}, 'addBy5、addBy10中都缓存了变量start');
+  console.log({res1,res2,res3},{res11,res22,res33}, 'addBy5、addBy10中都分别缓存了变量start');
 });
 
-/* 2-2 封装私有属性和方法 */
+/* 2-2 封装私有属性和方法 
+* 利用闭包的方法来保证命名空间，在jQuery这种项目中实用性高些
+*/
 (function() {
-  const tool = function() {
+  const tool = (function() {
     const add = function(a, b) {
       return a+b
     }
@@ -57,10 +59,9 @@
       add,
       ret
     }
-  }
+  })();
   
-  const tool_1 = tool()
-  let add_res = tool_1.add(1,2)
-  let ret_res = tool_1.ret([1,1,2,31,1,2])
-  console.log({add_res, ret_res});
-});
+  let add_res = tool.add(1,2)
+  let ret_res = tool.ret([1,1,2,31,1,2])
+  console.log({add_res, ret_res})
+})();

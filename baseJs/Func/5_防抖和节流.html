@@ -1,0 +1,86 @@
+<!--
+ * @Author: yuan.zhou
+ * @Date: 2021-04-19 00:50:25
+ * @Descripton: 事件频繁触发可能造成的问题?
+  一些浏览器事件:window.onresize、window.mousemove等，触发的频率非常高，会造成界面卡顿
+  如果向后台发送请求，频繁触发，对服务器造成不必要的压力 
+ * @LastEditTime: 2021-05-07 21:46:52
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>函数节流与防抖</title>
+</head>
+<body>
+
+  <button id="handle">正常处理</button>
+  <button id="throttle">测试函数节流</button>
+  <button id="debounce">测试函数防抖</button>
+  
+  <script>
+    /* 
+    实现函数节流
+    - 说明: 在函数需要频繁触发时: 函数执行一次后，只有大于设定的执行周期后才会执行第二次
+    - 理解: 适合多次事件按时间做平均分配触发
+    - 应用场景： 窗口调整（resize）
+                页面滚动（scroll）
+                DOM 元素的拖拽功能实现（mousemove）
+                抢购疯狂点击（click）
+    */
+    function throttle( callback, wait ) {
+      let start = 0
+      // 返回一个事件监听函数(也就是节流函数)
+      return function (event) {
+        console.log('throttle event')
+        // 只有当距离上次处理的时间间隔超过了wait时, 才执行处理事件的函数
+        const current = Date.now()
+        if ( current - start > wait) {
+          callback.call(this, event) // 需要指定this和参数
+          start = current
+        }
+      }
+    }
+
+  /* 
+  实现函数防抖
+  - 说明: 在函数需要频繁触发时: 在规定时间内，只让最后一次生效，前面的不生效。
+  - 理解: 适合多次事件一次响应的情况
+  - 应用场景: 输入框实时搜索联想（keyup/input）
+  */
+  function debounce( callback, wait ) {
+    // 用来保存定时器任务的标识id
+    let timeoutId = -1 
+    // 返回一个事件监听函数(也就是防抖函数)
+    return function (event) {
+      console.log('debounce event')
+      // 清除未执行的定时器任务
+      if (timeoutId !== -1) {
+        clearTimeout(timeoutId)
+      }
+      // 启动延迟 await 时间后执行的定时器任务
+      timeoutId = setTimeout( () => {
+        // 调用 callback 处理事件
+        callback.call(this, event)
+        // 处理完后重置标识
+        timeoutId = -1
+      }, wait)
+
+      console.log({timeoutId});
+    }
+  }
+
+
+  
+  /* 处理点击事件的回调函数 */
+  function handleClick(event) { // 处理事件的回调
+    console.log('处理点击事件', {this: this, event: event})
+  }
+
+    document.getElementById('handle').onclick = handleClick
+    document.getElementById('throttle').onclick = throttle(handleClick, 2000)
+    document.getElementById('debounce').onclick = debounce(handleClick, 12000)
+  </script>
+
+</body>
+</html>
