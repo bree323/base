@@ -1,1 +1,9 @@
-<!-- js基础文档 -->
+<!--
+ * @Author: yuan.zhou
+ * @Date: 2021-04-18 11:25:14
+ * @Descripton: 
+ * @LastEditTime: 2021-06-28 21:56:37
+-->
+目录说明： 
+-Func: 函数式编程 
+-Promise：异步编程
