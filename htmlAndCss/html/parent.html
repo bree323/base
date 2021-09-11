@@ -1,0 +1,27 @@
+<!--
+ * @Date: 2021-09-03 00:09:10
+ * @Descripton: 
+ * @LastEditTime: 2021-09-03 00:10:12
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+   我是父页面
+    <button id='btn'>父传给子</button>
+    <iframe src="http://127.0.0.1:5500/childHtml.html" id="childHtmlId">
+  </iframe>
+  </body>
+  <script>
+    window.addEventListener('message', function(event) {
+        console.log('父页面接收到信息', event.data);
+   });
+    document.getElementById('btn').addEventListener('click', () => {
+        const iframeDom = document.getElementById('childHtmlId');
+        iframeDom.contentWindow.postMessage('我是执鸢者1', 
+  'http://127.0.0.1:5500/childHtml1.html');
+   });
+  </script>
+</html>
