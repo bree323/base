@@ -1,3 +1,8 @@
+/*
+ * @Date: 2021-04-18 11:25:14
+ * @Descripton: 
+ * @LastEditTime: 2021-11-08 00:59:17
+ */
 class Student {
     school= "wuxing";
     go(){
