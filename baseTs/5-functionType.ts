@@ -1,13 +1,41 @@
-// 1-函数的参数
+/*
+ * @Date: 2022-07-01 16:49:43
+ * @Description: 函数的类型
+ */
+// 1-1 函数的参数
+// 函数声明式
+function fun(num: number) : string {
+    return num + "";
+}
+// 函数表达式
+const fun1: (num: number) => string = function(num: number) : string {
+    return num + "";
+}
+// 接口定义函数参数
 interface numArgType {
-    xx: number,
-    yy: number
+    xx: number;
+    yy: number;
 }
 const argFun = function( {xx, yy}: numArgType ): number {
     return xx + yy
 }
-const argTotal = argFun({xx: 1, yy: 1})
-// console.log({argTotal})
+
+// 接口定义函数的形状
+interface searchFunc {
+    (num: number, str: string): string;
+}
+const mySearch: searchFunc = function(num: number, str: string) : string {
+    return num + str;
+}
+
+// 接口定义函数参数
+interface IParams {
+    num: number;
+    str: string;
+}
+const foo: ({num, str}: IParams) => string = function({num, str} : IParams) : string {
+    return num + str;
+}
 
 // 2-函数的返回值
 // 2-1 返回值void
