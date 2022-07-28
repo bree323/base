@@ -4,8 +4,8 @@
  */
 const R = require("ramda");
 
-const map = (arr) => {
-  const double = (x) => x * 2;
+const map = (arr: Array<number>) => {
+  const double = (x: number) => x * 2;
   return R.map(double, arr);
 };
 
