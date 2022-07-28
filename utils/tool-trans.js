@@ -1,51 +1,49 @@
 /*
- * @Author: yuan.zhou
- * @Date: 2021-07-21 19:49:04
- * @Descripton: 
- * @LastEditTime: 2021-07-23 23:45:01
+ * @Date: 2022-07-28 11:14:27
+ * @Description: 转换工具
  */
 
 /**
  * 数字转中文大写
  * @param {*} num (Number | String)
  */
-function numToZhUp(num) {
-  let numStrArr = (num+'').split('')
-  let numArr = numStrArr.map(item => +item)
-  const numZhMap = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
-  const numUtils = ['','拾','百','千','万','拾','百','千','亿','拾'];  // 保留10为数
+const num2ZhUp = (num) => {
+  let numStrArr = (num + "").split("");
+  let numArr = numStrArr.map((item) => +item);
+  const numZhMap = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
+  const numUtils = ["", "拾", "百", "千", "万", "拾", "百", "千", "亿", "拾"]; // 保留10为数
   // ['','十','百','千','万','十','百','千','亿','十','百','千','万','十','百','千','亿']; // 保留17位数
-  let numZhStr = ''
+  let numZhStr = "";
   for (let i = 0; i < numArr.length; i++) {
     const _num = numArr[i];
-    const _len = numArr.length
-    numZhStr += numZhMap[_num]  // 获取阿拉伯数字对应的中文大写数字
-    _num !== 0 && ( numZhStr += numUtils[_len-i-1] ) // 不为0才添加单位
+    const _len = numArr.length;
+    numZhStr += numZhMap[_num]; // 获取阿拉伯数字对应的中文大写数字
+    _num !== 0 && (numZhStr += numUtils[_len - i - 1]); // 不为0才添加单位
   }
-  
-  numZhStr = numZhStr.replace(/零+$/, '') // 去除末尾多余的‘零’
-  numZhStr = numZhStr.replace(/零{2}/, '') // 去除中间多余的‘零’
-  console.log({numArr, numZhStr});
-}
 
-numToZhUp(9999999999)
-numToZhUp(10000010) //6
-numToZhUp(1001) //6 
+  numZhStr = numZhStr.replace(/零+$/, ""); // 去除末尾多余的‘零’
+  numZhStr = numZhStr.replace(/零{2}/, ""); // 去除中间多余的‘零’
+  console.log({ numArr, numZhStr });
+};
 
-
-const moneyNumToChineseUplower = function (money) {
+/**
+ * 数字金额转换为中文大写金额
+ * @param {number | string} money
+ * @returns
+ */
+const moneyNum2ChineseUplower = (money) => {
   //汉字的数字
-  let cnNums = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+  let cnNums = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
   //基本单位
-  let cnIntRadice = ['', '拾', '佰', '仟']
+  let cnIntRadice = ["", "拾", "佰", "仟"];
   //对应整数部分扩展单位
-  let cnIntUnits = ['', '万', '亿']
+  let cnIntUnits = ["", "万", "亿"];
   //对应小数部分单位
-  let cnDecUnits = ['角', '分', '毫', '厘']
+  let cnDecUnits = ["角", "分", "毫", "厘"];
   //整数金额时后面跟的字符
-  let cnInteger = '整';
+  let cnInteger = "整";
   //整型完以后的单位
-  let cnIntLast = '元';
+  let cnIntLast = "元";
   //最大处理的数字
   let maxNum = 999999999999999.9999;
   //金额整数部分
@@ -53,14 +51,16 @@ const moneyNumToChineseUplower = function (money) {
   //金额小数部分
   let decimalNum;
   //输出的中文金额字符串
-  let chineseStr = '';
+  let chineseStr = "";
   //分离金额后用的数组，预定义
   let parts;
-  if (money == '') { return ''; }
+  if (money == "") {
+    return "";
+  }
   money = parseFloat(money);
   if (money >= maxNum) {
     //超出最大处理数字
-    return '';
+    return "";
   }
   if (money == 0) {
     chineseStr = cnNums[0] + cnIntLast + cnInteger;
@@ -68,11 +68,11 @@ const moneyNumToChineseUplower = function (money) {
   }
   //转换为字符串
   money = money.toString();
-  if (money.indexOf('.') == -1) {
+  if (money.indexOf(".") == -1) {
     integerNum = money;
-    decimalNum = '';
+    decimalNum = "";
   } else {
-    parts = money.split('.');
+    parts = money.split(".");
     integerNum = parts[0];
     decimalNum = parts[1].substr(0, 4);
   }
@@ -85,7 +85,7 @@ const moneyNumToChineseUplower = function (money) {
       let p = IntLen - i - 1;
       let q = p / 4;
       let m = p % 4;
-      if (n == '0') {
+      if (n == "0") {
         zeroCount++;
       } else {
         if (zeroCount > 0) {
@@ -102,31 +102,26 @@ const moneyNumToChineseUplower = function (money) {
     chineseStr += cnIntLast;
   }
   //小数部分
-  if (decimalNum != '') {
+  if (decimalNum != "") {
     let decLen = decimalNum.length;
     for (let i = 0; i < decLen; i++) {
       let n = decimalNum.substr(i, 1);
-      if (n != '0') {
+      if (n != "0") {
         chineseStr += cnNums[Number(n)] + cnDecUnits[i];
       }
     }
   }
 
-  if (chineseStr == '') {
+  if (chineseStr == "") {
     chineseStr += cnNums[0] + cnIntLast + cnInteger;
-  } else if (decimalNum == '') {
+  } else if (decimalNum == "") {
     chineseStr += cnInteger;
   }
-  
+
   return chineseStr;
-}
+};
 
-// console.log(moneyNumToChineseUplower(9999999999))
-// console.log(moneyNumToChineseUplower(10001))
-// console.log(moneyNumToChineseUplower(10000010))
-
-// module.exports = {
-//   sum,
-//   numToZhUp,
-//   intToChinese
-// };
+module.exports = {
+  num2ZhUp,
+  moneyNum2ChineseUplower,
+};

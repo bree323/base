@@ -1,4 +1,7 @@
 {
+  "name": "base",
+  "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "node-es6": "babel-node --presets env",
     "test": "jest"
@@ -6,5 +9,8 @@
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
     "jest": "^27.0.6"
+  },
+  "dependencies": {
+    "ramda": "^0.28.0"
   }
 }
