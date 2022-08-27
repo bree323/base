@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-07-28 14:32:22
  * @Description: 冒泡排序
- * 描述: 相邻元素比较，选定冒泡项右移（从右侧开始排序）
+ * 描述: 相邻元素比较，选定冒泡项移动
  */
 export {}; // 这句声明表明将该文件视为一个模块(__esmodule = true)
 
@@ -58,11 +58,6 @@ const imple_2: SortFunc = (arr: ArrType) => {
         }
     }
     console.log("冒泡排序-实现方案二的步骤", step);
-    return arr;
-}
-
-const imple_3: SortFunc = (arr: ArrType) => {
-    
     return arr;
 }
 
