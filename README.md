@@ -1,8 +1,7 @@
 <!--
  * @Author: yuan.zhou
  * @Date: 2021-04-18 11:25:14
- * @Descripton: 
- * @LastEditTime: 2021-07-21 19:38:37
+ * @Descripton: readme
 -->
 本项目用于ts、js基础起步，也作为其它技术的测试点，可直接在node环境下运行 ts资源来源： 技术胖
 
