@@ -10,7 +10,7 @@ interface SortFunc {
     (arr: ArrType) : ArrType,
 }
 
-const imple_1: SortFunc = (arr: ArrType) => {
+/* const imple_1: SortFunc = (arr: ArrType) => {
     let step = 0, transStep = 0;
     // 外层循环，循环出每个元素
     for(let i = 0; i < arr.length; i++) {
@@ -30,7 +30,20 @@ const imple_1: SortFunc = (arr: ArrType) => {
     console.log("选择排序-实现方案一", {step, transStep});
     
     return arr;
-}
+} */
+
+const imple_1: SortFunc = (arr: ArrType) => {
+    for (let i = 0; i < arr.length; i++) {
+        let min_index = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[min_index]) {
+                min_index = j;
+            }
+        }
+        min_index !== i && ([arr[min_index], arr[i]] = [arr[i], arr[min_index]]);
+    }
+    return arr;
+} 
 
 module.exports = {
     imple_1,

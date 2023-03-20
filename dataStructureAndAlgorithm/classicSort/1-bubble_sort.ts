@@ -43,7 +43,7 @@ const imple_1: SortFunc = (arr: ArrType) => {
 /**
  * 实现方案二
  */
-const imple_2: SortFunc = (arr: ArrType) => {
+/* const imple_2: SortFunc = (arr: ArrType) => {
     let step = 0;
     // 外层循环，循环整个数组
     for (let i = 0; i < arr.length; i++) {
@@ -59,7 +59,18 @@ const imple_2: SortFunc = (arr: ArrType) => {
     }
     console.log("冒泡排序-实现方案二的步骤", step);
     return arr;
-}
+} */
+
+const imple_2: SortFunc = (arr: ArrType) => {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 1; j < arr.length - i; j++) {
+            if (arr[j - 1] > arr[j]) {
+                [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]] 
+            }
+        }
+    }
+    return arr;
+};
 
 module.exports = {
     imple_1,
